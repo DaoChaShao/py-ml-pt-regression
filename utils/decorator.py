@@ -18,14 +18,17 @@ def timer(func):
 
     @wraps(func)
     def wrapper(*args, **kwargs):
+        print("*" * 50)
+        print(f"The function named {func.__name__!r} is starting:")
+        print("-" * 50)
         time_start = perf_counter()
         result = func(*args, **kwargs)
         time_end = perf_counter()
         time_elapsed = time_end - time_start
         print("-" * 50)
         print(f"The function named {func.__name__!r} took {time_elapsed:.4f} seconds to complete.")
-        # print("-" * 50)
-        # print()
+        print("*" * 50)
+        print()
         return result
 
     return wrapper
