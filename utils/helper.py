@@ -6,9 +6,8 @@
 # @File     :   helper.py
 # @Desc     :   
 
-from random import seed, getstate, setstate
+from random import seed as rnd_seed, getstate, setstate
 from time import perf_counter
-from torch import manual_seed, get_rng_state, set_rng_state
 
 
 class Timer(object):
@@ -76,25 +75,22 @@ class Beautifier(object):
 class RandomSeed:
     """ Setting random seed for reproducibility """
 
-    def __init__(self, description: str, seed_value: int = 27):
+    def __init__(self, description: str, seed: int = 27):
         """ Initialise the RandomSeed class
         :param description: the description of a random seed
-        :param seed_value: the seed value to be set
+        :param seed: the seed value to be set
         """
         self._description: str = description
-        self._seed: int = seed_value
-        self._previous_py_seed = None
+        self._seed: int = seed
         self._previous_py_seed = None
 
     def __enter__(self):
         """ Set the random seed """
         # Save the previous random seed state
         self._previous_py_seed = getstate()
-        self._previous_pt_seed = get_rng_state()
 
         # Set the new random seed
-        seed(self._seed)
-        manual_seed(self._seed)
+        rnd_seed(self._seed)
 
         print("*" * 50)
         print(f"{self._description!r} has been set randomness {self._seed}.")
@@ -107,8 +103,6 @@ class RandomSeed:
         # Restore the previous random seed state
         if self._previous_py_seed is not None:
             setstate(self._previous_py_seed)
-        if self._previous_pt_seed is not None:
-            set_rng_state(self._previous_pt_seed)
 
         print("-" * 50)
         print(f"{self._description!r} has been restored to previous randomness.")
