@@ -5,6 +5,9 @@
 
 ### Features
 
+- update README.zh-CN.md with data description and structure for housing price prediction dataset ([980dec6](https://github.com///commit/980dec6474e9a3944661abf10b0bf5bc3bf905d6))
+- update README.md with data description and structure for housing price prediction dataset ([6094b5b](https://github.com///commit/6094b5badefd517fd2a47bda195e88dd80661108))
+- update CHANGELOG.md with recent feature additions and improvements ([a471c71](https://github.com///commit/a471c71447d1dc877f6e82f50e940815404d7686))
 - update dependencies in uv.lock for filelock, fsspec, mpmath, and torch ([ceb1643](https://github.com///commit/ceb16434e3a93c1f6528102f9f03bbedcfffbd6d))
 - add train data file ([96f3035](https://github.com///commit/96f30357648f69a7ed3e1b78dfb1903b7d288753))
 - add test data file ([2d14586](https://github.com///commit/2d14586882248a3142785a46b9cd53d0399b3888))
