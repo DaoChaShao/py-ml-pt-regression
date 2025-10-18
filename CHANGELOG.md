@@ -1,10 +1,23 @@
 <!-- insertion marker -->
 <a name="0.1.0"></a>
 
-## [0.1.0](https://github.com///compare/998830ce45a9120223b383305af1ed4d64ad1623...0.1.0) (2025-10-18)
+## [0.1.0](https://github.com///compare/998830ce45a9120223b383305af1ed4d64ad1623...0.1.0) (2025-10-19)
 
 ### Features
 
+- update uv.lock file of uv installation ([b54403d](https://github.com///commit/b54403d6dfb64ba7b57de7a98cdf1e5f2fa45f7b))
+- add stats.py for data loading, preprocessing, and PCA analysis ([0c6f1ed](https://github.com///commit/0c6f1edce91c366fffb48daf029285d5792b32dd))
+- update dependencies in pyproject.toml for enhanced functionality and compatibility ([1018dc6](https://github.com///commit/1018dc6e9249d2fecaa8ad395a41a8b0715fbdd7))
+- implement custom TorchRandomSeed, TorchDataset, and TorchDataLoader classes for enhanced data handling and reproducibility ([73492a1](https://github.com///commit/73492a1a00c2ffcd2606aa68583ae752b4c33137))
+- add a simple feedforward neural network model implementation ([7c213a6](https://github.com///commit/7c213a651ff0960aa0440b9c4ea3acbd9cf73d47))
+- implement main function for data loading and preprocessing ([5f44227](https://github.com///commit/5f44227adbe75b7b0c3e13b8d669f82fbc8b9bd4))
+- add home.py for the Regression Prediction Tool interface ([4d0b3cf](https://github.com///commit/4d0b3cf582d58a8d4f6cdc792c3e77f6d6ae24aa))
+- refactor RandomSeed class to improve seed handling and logging ([c41196d](https://github.com///commit/c41196dccde48163fa27f4f4b518128329661b07))
+- enhance decorator with detailed function execution logging ([14df255](https://github.com///commit/14df255f21a48f8efc4a84e4c105f83bb58c87f3))
+- add config.py for dataset paths and model hyperparameters ([ef4bf74](https://github.com///commit/ef4bf74bc12931851a0f660a33880fb4a63170ac))
+- add __init__.py with main function template ([7274ee1](https://github.com///commit/7274ee1883ce44c602be28c8a96950001d48da33))
+- add .gitignore to exclude Python-generated files and IDE configurations ([337bf70](https://github.com///commit/337bf7068ae1f465ab5e4cfc40bff90add6844a7))
+- update CHANGELOG.md with recent updates to README files and feature additions ([c78e7b7](https://github.com///commit/c78e7b75508975932331a41edb97958a36bff761))
 - update README.zh-CN.md with data description and structure for housing price prediction dataset ([980dec6](https://github.com///commit/980dec6474e9a3944661abf10b0bf5bc3bf905d6))
 - update README.md with data description and structure for housing price prediction dataset ([6094b5b](https://github.com///commit/6094b5badefd517fd2a47bda195e88dd80661108))
 - update CHANGELOG.md with recent feature additions and improvements ([a471c71](https://github.com///commit/a471c71447d1dc877f6e82f50e940815404d7686))
@@ -20,7 +33,6 @@
 - add decorators for timing and beautifying function outputs ([2737151](https://github.com///commit/27371511fb1c185a946408440ef4ebfcf1fd2266))
 - add data_description.txt with detailed property attributes and classifications ([a429176](https://github.com///commit/a429176e0103af29c851888a145d56c68eff1c27))
 - add __init__.py with main function and metadata ([ca0dc85](https://github.com///commit/ca0dc85e34f682010587626208b1be2a489694c7))
-- add .gitignore to exclude Python-generated files and IDE configurations ([dc88d55](https://github.com///commit/dc88d55cef1b56ab9a0a00b6fe6e62e33b33f287))
 - add CHANGELOG.md for version 0.1.0 with initial features list ([f858b14](https://github.com///commit/f858b148aa7a955b422c8888c98c52b491572369))
 - add uv.lock for dependency management and package versions ([27f64aa](https://github.com///commit/27f64aa1909d4d8270bb03065bc1451c4b857125))
 - add Chinese README.md with project introduction, privacy notice, and environment setup instructions ([acaa486](https://github.com///commit/acaa48688def487846833f3742bce6a966325e6a))
