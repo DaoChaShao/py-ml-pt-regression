@@ -9,6 +9,35 @@ This project develops a house price prediction system using PyTorch and PySide6,
 to predict housing prices. The graphical user interface allows users to easily input house features and obtain
 prediction results.
 
+**DATA DESCRIPTION**
+---
+The “House Prices – Advanced Regression Techniques” dataset is designed for a regression task: **predicting the sale
+price (SalePrice)** of residential homes. Its primary purpose is for practicing feature engineering, regression
+modeling, and data preprocessing workflows (including missing value handling, categorical encoding, continuous variable
+transformation, etc).
+
+The dataset originates from a collection of home sale transactions in Ames, Iowa, USA, and includes many property
+attributes (such as lot size, house age, number of rooms, neighborhood, quality ratings, garage, basement, porch, etc).
+
+**DATA STRUCTURE**
+---
+
++ The **training set (train.csv)** includes for each home: an Id, about 79 attribute features (various types: numeric,
+  categorical, ordinal) and the target variable **SalePrice**.
++ The **test set (test.csv)** contains the same features (except SalePrice) and is used for making predictions for
+  submission/evaluation.
++ The features can be broadly grouped into:
+    + Physical attributes: e.g., LotArea (lot size), 1stFlrSF / 2ndFlrSF (first/second floor area), GrLivArea (
+      above-ground living area), TotalBsmtSF (basement total area)
+    + Construction/time attributes: YearBuilt (year built), YearRemodAdd (year of remodel), GarageYrBlt (garage built
+      year), YrSold (year sold)
+    + Structural/quality attributes: e.g., OverallQual (overall quality rating), OverallCond (overall condition rating),
+      ExterQual (exterior quality), BsmtQual (basement quality)
+    + Facilities/additional attributes: e.g., GarageType (garage type), PoolArea (pool area), Fence (fence condition),
+      MiscFeature (miscellaneous features)
+    + Location/environment attributes: Neighborhood (neighborhood), MSZoning (zoning class), LotShape (lot shape)
+    + Categorical & ordinal features: e.g., “Ex”/“Gd”/“TA”/“Fa”/“Po” for quality ratings, which have a natural ordering.
+
 **PRIVACY NOTICE**
 ---
 
