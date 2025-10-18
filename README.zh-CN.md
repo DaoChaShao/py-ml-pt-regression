@@ -7,6 +7,26 @@
 ---
 本项目基于 PyTorch 和 PySide6 开发了一个房价预测系统，使用线性回归模型来预测房屋价格。通过图形用户界面，用户可以方便地输入房屋特征并获取预测结果。
 
+**数据描述**
+---
+“House Prices – Advanced Regression Techniques” 是一个**回归任务**的数据集，目标是 预测住宅的**销售价格（SalePrice）**
+。其主要用途是练习特征工程（feature engineering）、回归模型（regression models）、以及数据预处理流程（包括缺失值处理、类别变量编码、连续变量变换等）。
+
+数据源来自美国艾姆斯市（Ames, Iowa）的一批房屋交易数据，包含大量住宅属性特征（如地块面积、房屋建造年份、房间数、位置类型、质量评级、车库、地下室、露台等）。
+
+**数据结构**
+---
+
++ **训练集（train.csv）**包含每幢房屋的 Id、大约 79 个属性特征（不同类型：数值型、类别型、顺序型）以及目标变量 **SalePrice**。
++ **测试集（test.csv）**具有与训练集同样的特征（不含 SalePrice），模型在测试集上的预测结果用于提交评估。
++ 特征大致可分为：
+    + 房屋物理属性：例如 LotArea（地块面积）、1stFlrSF / 2ndFlrSF（第一、第二层地上面积）、GrLivArea（地上居住面积）、TotalBsmtSF（地下室总面积）
+    + 建造与时间属性：YearBuilt（建造年份）、YearRemodAdd（改造年份）、GarageYrBlt（车库建造年份）、YrSold（售出年份）
+    + 房屋构造与状态属性：例如 OverallQual（整体质量评级）、OverallCond（整体状况评级）、ExterQual（外部质量）、BsmtQual（地下室质量）
+    + 附加设施或状态属性：例如 GarageType（车库类型）、PoolArea（泳池面积）、Fence（围栏状况）、MiscFeature（杂项设施）
+    + 位置/环境属性：Neighborhood（街区）、MSZoning（分区）、LotShape（土地图形）等
++ 类别型特征 & 顺序型特征：例如 “Ex”/“Gd”/“TA”/“Fa”/“Po” 用于质量评级，具有明确顺序关系。
+
 **隐私声明**
 ---
 本应用程序旨在处理您提供的数据以生成定制化的建议和结果。您的隐私至关重要。
