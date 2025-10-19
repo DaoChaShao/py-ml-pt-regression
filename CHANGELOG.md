@@ -5,6 +5,18 @@
 
 ### Features
 
+- add a model.pth ([33429e0](https://github.com///commit/33429e0488060fc66f86e7bf14379b5b0f8762fd))
+- add TorchTrainer class for managing training and validation processes ([c7b4646](https://github.com///commit/c7b464636cc8bb16c8eb8e184410541824e4d06e))
+- rename home.py to table.py for improved clarity ([f8d4f52](https://github.com///commit/f8d4f527fb24a8a067b2bf4830281613b0867863))
+- add NumpyRandomSeed context manager and split_data function for data handling ([c01b6fa](https://github.com///commit/c01b6fa707637809cf9ca1d5300f18ebdcda2dd9))
+- enhance device management and add log MSE loss function ([81f5cea](https://github.com///commit/81f5cea80e06c73a58694c14105ba57d6fd61375))
+- add plot.py for visualizing training and validation loss with a GUI ([8c6b2d8](https://github.com///commit/8c6b2d8eb6bf363b3ed96567db0899913b703c79))
+- rename Model class to TorchLinearModel and add weight initialization method ([cbd730c](https://github.com///commit/cbd730c24708c2e590e42e987d0cec97218b2d50))
+- refactor main.py to enhance data preparation and model training workflow ([6e2ee51](https://github.com///commit/6e2ee51f9f66885b1f47b39a182275cc28535680))
+- update config.py to add data processing and PCA parameters ([2dfea2e](https://github.com///commit/2dfea2e81e65c7e88e388bd73da8fbd2c3df11ab))
+- rename ui/__init__.py to __init__.py for improved module structure ([dab16db](https://github.com///commit/dab16db831e77496ad2398d02f5d71fd73baefa0))
+- rename ui/.gitignore to .gitignore for improved file management ([4457597](https://github.com///commit/44575970479451d40704b7c1fcef8adf141e4047))
+- update CHANGELOG.md with recent feature additions and improvements ([bc7d947](https://github.com///commit/bc7d9478812c060691bf420bac0f2b08cdf28f19))
 - update uv.lock file of uv installation ([b54403d](https://github.com///commit/b54403d6dfb64ba7b57de7a98cdf1e5f2fa45f7b))
 - add stats.py for data loading, preprocessing, and PCA analysis ([0c6f1ed](https://github.com///commit/0c6f1edce91c366fffb48daf029285d5792b32dd))
 - update dependencies in pyproject.toml for enhanced functionality and compatibility ([1018dc6](https://github.com///commit/1018dc6e9249d2fecaa8ad395a41a8b0715fbdd7))
@@ -20,7 +32,6 @@
 - update CHANGELOG.md with recent updates to README files and feature additions ([c78e7b7](https://github.com///commit/c78e7b75508975932331a41edb97958a36bff761))
 - update README.zh-CN.md with data description and structure for housing price prediction dataset ([980dec6](https://github.com///commit/980dec6474e9a3944661abf10b0bf5bc3bf905d6))
 - update README.md with data description and structure for housing price prediction dataset ([6094b5b](https://github.com///commit/6094b5badefd517fd2a47bda195e88dd80661108))
-- update CHANGELOG.md with recent feature additions and improvements ([a471c71](https://github.com///commit/a471c71447d1dc877f6e82f50e940815404d7686))
 - update dependencies in uv.lock for filelock, fsspec, mpmath, and torch ([ceb1643](https://github.com///commit/ceb16434e3a93c1f6528102f9f03bbedcfffbd6d))
 - add train data file ([96f3035](https://github.com///commit/96f30357648f69a7ed3e1b78dfb1903b7d288753))
 - add test data file ([2d14586](https://github.com///commit/2d14586882248a3142785a46b9cd53d0399b3888))
