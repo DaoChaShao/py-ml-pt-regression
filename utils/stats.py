@@ -21,6 +21,48 @@ from typing import Union
 from utils.decorator import beautifier, timer
 
 
+class NumpyRandomSeed:
+    """ Setting random seed for reproducibility """
+
+    def __init__(self, description: str, seed: int = 27):
+        """ Initialise the RandomSeed class
+        :param description: the description of a random seed
+        :param seed: the seed value to be set
+        """
+        self._description: str = description
+        self._seed: int = seed
+        self._previous_np_seed = None
+
+    def __enter__(self):
+        """ Set the random seed """
+        # Save the previous random seed state
+        self._previous_np_seed = np_random.get_state()
+
+        # Set the new random seed
+        np_random.seed(self._seed)
+
+        print("*" * 50)
+        print(f"{self._description!r} has been set randomness {self._seed}.")
+        print("-" * 50)
+
+        return self
+
+    def __exit__(self, *args):
+        """ Exit the random seed context manager """
+        # Restore the previous random seed state
+        if self._previous_np_seed is not None:
+            np_random.set_state(self._previous_np_seed)
+
+        print("-" * 50)
+        print(f"{self._description!r} has been restored to previous randomness.")
+        print("*" * 50)
+        print()
+
+    def __repr__(self):
+        """ Return a string representation of the random seed """
+        return f"{self._description!r} is set to randomness {self._seed}."
+
+
 @timer
 def load_data(dataset_path: str) -> tuple[DataFrame, DataFrame]:
     """ Read data from a dataset file
@@ -104,6 +146,33 @@ def preprocess_data(data: DataFrame, is_tensor: bool = False) -> tuple[Union[Dat
 
 
 @timer
+def split_data(
+        features: DataFrame, labels: DataFrame,
+        valid_size: float = 0.2, random_state: int = 27, is_shuffle: bool = True
+) -> tuple:
+    """ Split the data into training and testing sets
+    :param features: the DataFrame containing the selected features for training
+    :param labels: the DataFrame containing the target labels
+    :param valid_size: the proportion of the dataset to include in the test split
+    :param random_state: random seed for reproducibility
+    :param is_shuffle: whether to shuffle the data before splitting
+    :return: the training and testing sets for features and labels
+    """
+    X_train, X_valid, y_train, y_valid = train_test_split(
+        features, labels,
+        test_size=valid_size,
+        random_state=random_state,
+        shuffle=is_shuffle,
+        stratify=None
+    )
+
+    print(f"X_train shape: {X_train.shape}, y_train shape: {y_train.shape}")
+    print(f"X_valid shape: {X_valid.shape}, y_valid shape: {y_valid.shape}")
+
+    return X_train, X_valid, y_train, y_valid
+
+
+@timer
 def pca_importance(data: DataFrame, threshold: float = 0.95, top_n: int = None):
     """ Calculate PCA feature importance
     :param data: the DataFrame containing the selected features for training
@@ -146,67 +215,3 @@ def pca_importance(data: DataFrame, threshold: float = 0.95, top_n: int = None):
     pprint(cumulative_variance[:10] if top_n is None else cumulative_variance)
 
     return important_features, model, ratios
-
-
-class NumpyRandomSeed:
-    """ Setting random seed for reproducibility """
-
-    def __init__(self, description: str, seed: int = 27):
-        """ Initialise the RandomSeed class
-        :param description: the description of a random seed
-        :param seed: the seed value to be set
-        """
-        self._description: str = description
-        self._seed: int = seed
-        self._previous_np_seed = None
-
-    def __enter__(self):
-        """ Set the random seed """
-        # Save the previous random seed state
-        self._previous_np_seed = np_random.get_state()
-
-        # Set the new random seed
-        np_random.seed(self._seed)
-
-        print("*" * 50)
-        print(f"{self._description!r} has been set randomness {self._seed}.")
-        print("-" * 50)
-
-        return self
-
-    def __exit__(self, *args):
-        """ Exit the random seed context manager """
-        # Restore the previous random seed state
-        if self._previous_np_seed is not None:
-            np_random.set_state(self._previous_np_seed)
-
-        print("-" * 50)
-        print(f"{self._description!r} has been restored to previous randomness.")
-        print("*" * 50)
-        print()
-
-    def __repr__(self):
-        """ Return a string representation of the random seed """
-        return f"{self._description!r} is set to randomness {self._seed}."
-
-
-@timer
-def split_data(features: DataFrame, labels: DataFrame, valid_size: float = 0.2, random_state: int = 27) -> tuple:
-    """ Split the data into training and testing sets
-    :param features: the DataFrame containing the selected features for training
-    :param labels: the DataFrame containing the target labels
-    :param valid_size: the proportion of the dataset to include in the test split
-    :param random_state: random seed for reproducibility
-    :return: the training and testing sets for features and labels
-    """
-    X_train, X_valid, y_train, y_valid = train_test_split(
-        features, labels,
-        test_size=valid_size,
-        random_state=random_state,
-        stratify=None
-    )
-
-    print(f"X_train shape: {X_train.shape}, y_train shape: {y_train.shape}")
-    print(f"X_valid shape: {X_valid.shape}, y_valid shape: {y_valid.shape}")
-
-    return X_train, X_valid, y_train, y_valid
