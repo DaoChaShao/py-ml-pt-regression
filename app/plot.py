@@ -6,6 +6,7 @@
 # @File     :   plot.py
 # @Desc     :   
 
+from PySide6.QtCore import Signal, QThread, Qt
 from PySide6.QtCharts import QLineSeries, QChart, QChartView
 from PySide6.QtGui import QPainter
 from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget,
@@ -13,7 +14,29 @@ from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget,
                                QPushButton, )
 from sys import argv, exit
 
-from main import main
+from torch import optim, device
+
+from main import data_preparation
+from utils.config import (HIDDEN_UNITS, ACCELERATOR,
+                          ALPHA,
+                          EPOCHS, MODEL_SAVE_PATH)
+from utils.models import TorchLinearModel
+from utils.trainer import TorchTrainer
+
+
+class TrainerThread(QThread):
+    losses = Signal(int, float, float)
+
+    def run(self):
+        train_loader, valid_loader, _ = data_preparation()
+        model = TorchLinearModel(train_loader[0][0].shape[0], HIDDEN_UNITS, 1)
+        model.to(device(ACCELERATOR))
+        optimiser = optim.Adam(model.parameters(), lr=ALPHA)
+        trainer = TorchTrainer(model, optimiser, ACCELERATOR)
+
+        trainer.losses.connect(self.losses)
+
+        trainer.fit(train_loader, valid_loader, EPOCHS, MODEL_SAVE_PATH)
 
 
 class MainWindow(QMainWindow):
@@ -29,11 +52,13 @@ class MainWindow(QMainWindow):
         self._btn_labels = ["Plot", "Clear", "Exit"]
         self._buttons = []
 
-        self._line_titles: list[str] = ["Train Loss", "Valid Loss"]
-        self._train_losses: list = []
-        self._valid_losses: list = []
+        self._series_train_loss = QLineSeries()
+        self._series_valid_loss = QLineSeries()
 
         self._setup()
+
+        self._thread = TrainerThread()
+        self._thread.losses.connect(self._get_losses)
 
     def _setup(self):
         _layout = QVBoxLayout()
@@ -61,24 +86,20 @@ class MainWindow(QMainWindow):
 
     def _click2plot(self) -> None:
         """ Plot random data points """
-        # Delete previous series
+        # Initialise the chart and data docker
         self._chart.removeAllSeries()
+        self._series_train_loss.clear()
+        self._series_valid_loss.clear()
 
-        # Start to train
-        main()
-
-        for i, line in enumerate(self._line_titles):
-            series = QLineSeries()
-            series.setName(line)
-            data = self._line_data[i]
-            for j, point in enumerate(data):
-                series.append(j, point)
-            self._chart.addSeries(series)
-
-        self._chart.setTitle(" & ".join(self._line_titles))
+        self._series_train_loss.setName("Train Loss")
+        self._series_valid_loss.setName("Valid Loss")
+        self._chart.addSeries(self._series_train_loss)
+        self._chart.addSeries(self._series_valid_loss)
         self._chart.createDefaultAxes()
+        self._chart.setTitle("Training and Validation Loss over Epochs")
 
-        self._chart.update()
+        # Start to train in a separate thread
+        self._thread.start()
 
         for button in self._buttons:
             if button.text() == "Clear":
@@ -101,11 +122,25 @@ class MainWindow(QMainWindow):
             if button.text() == "Plot":
                 button.setEnabled(True)
 
-    def get_train_loss(self, epoch: int, loss: float) -> None:
-        self._train_losses.append((epoch, loss))
+    def _get_losses(self, epoch: int, loss_train: float, loss_valid: float) -> None:
+        print(f"[Signal] Epoch {epoch}: Train Loss {loss_train:.4f} - Valid Loss {loss_valid:.4f}")
+        self._series_train_loss.append(epoch, loss_train)
+        self._series_valid_loss.append(epoch, loss_valid)
 
-    def get_valid_loss(self, epoch: int, loss: float) -> None:
-        self._valid_losses.append((epoch, loss))
+        # Set axis x range dynamically
+        axis_x = self._chart.axes(Qt.Orientation.Horizontal, self._series_train_loss)[0]
+        axis_x.setRange(0, epoch * 1.1)
+
+        # Set axis y range dynamically
+        axis_y = self._chart.axes(Qt.Orientation.Vertical, self._series_train_loss)[0]
+        points_y = [self._series_train_loss.at(i).y() for i in range(self._series_train_loss.count())]
+        if points_y:
+            min_y = min(points_y)
+            max_y = max(points_y)
+            axis_y.setRange(min_y * 0.9, max_y * 1.1)
+
+        # Update the view
+        self._view.update()
 
 
 if __name__ == "__main__":
