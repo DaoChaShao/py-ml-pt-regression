@@ -1,10 +1,14 @@
 <!-- insertion marker -->
 <a name="0.1.0"></a>
 
-## [0.1.0](https://github.com///compare/998830ce45a9120223b383305af1ed4d64ad1623...0.1.0) (2025-10-19)
+## [0.1.0](https://github.com///compare/998830ce45a9120223b383305af1ed4d64ad1623...0.1.0) (2025-10-20)
 
 ### Features
 
+- update TorchTrainer to emit combined training and validation losses ([4dcad5b](https://github.com///commit/4dcad5b8a58a1bf892ec53145af7ac3a0ca42bcd))
+- implement TrainerThread for asynchronous training and validation loss plotting ([f44d379](https://github.com///commit/f44d37973efd8da615215f4731bdbb4781abe9a9))
+- update data_preparation function to return a list of strings for improved type clarity ([c60d472](https://github.com///commit/c60d472d49524d4b189c11804cd06143bd7916ed))
+- update file paths in config.py to use BASE_DIRECTORY for improved portability ([0935dca](https://github.com///commit/0935dca3aa7c3bceeb11810de59fd3054e570c43))
 - add a model.pth ([33429e0](https://github.com///commit/33429e0488060fc66f86e7bf14379b5b0f8762fd))
 - add TorchTrainer class for managing training and validation processes ([c7b4646](https://github.com///commit/c7b464636cc8bb16c8eb8e184410541824e4d06e))
 - rename home.py to table.py for improved clarity ([f8d4f52](https://github.com///commit/f8d4f527fb24a8a067b2bf4830281613b0867863))
