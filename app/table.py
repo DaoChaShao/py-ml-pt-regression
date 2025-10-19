@@ -3,7 +3,7 @@
 # @Time     :   2025/10/18 15:03
 # @Author   :   Shawn
 # @Version  :   Version 0.1.0
-# @File     :   home.py
+# @File     :   table.py
 # @Desc     :   
 
 from PySide6.QtGui import QStandardItemModel, QStandardItem
