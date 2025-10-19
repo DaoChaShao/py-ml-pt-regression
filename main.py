@@ -26,7 +26,7 @@ from utils.stats import (load_data, summary_data,
 from utils.trainer import TorchTrainer
 
 
-def data_preparation() -> tuple[TorchDataLoader, TorchDataLoader, list]:
+def data_preparation() -> tuple[TorchDataLoader, TorchDataLoader, list[str]]:
     """ Data Preparation """
     # Load training raw dataset
     X_train_raw, y_train_raw = load_data(TRAIN_DATASET)
@@ -46,7 +46,7 @@ def data_preparation() -> tuple[TorchDataLoader, TorchDataLoader, list]:
     summary_data(X_valid)
 
     # Get the important features using PCA
-    important_features, _, _ = pca_importance(X_train, PCA_VARIANCE_THRESHOLD)
+    important_features, pca_model, _ = pca_importance(X_train, PCA_VARIANCE_THRESHOLD)
     # Get the important data
     X_train_pca = X_train[important_features]
     X_valid_pca = X_valid[important_features]
