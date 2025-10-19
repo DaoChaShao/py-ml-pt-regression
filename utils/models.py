@@ -9,7 +9,7 @@
 from torch import nn, Tensor
 
 
-class Model(nn.Module):
+class TorchLinearModel(nn.Module):
     """ A simple feedforward neural network model """
 
     def __init__(self, features: int, hidden_units: int, output_size: int) -> None:
@@ -26,6 +26,18 @@ class Model(nn.Module):
             nn.Dropout(0.2),
         )
         self._output = nn.Linear(hidden_units, output_size)
+
+        self.apply(self._init_weights)
+
+    @staticmethod
+    def _init_weights(module: nn.Module) -> None:
+        """ Initialize model parameters
+        - Avoid initialising BatchNorm layers
+        """
+        if isinstance(module, nn.Linear):
+            (nn.init.xavier_normal_(module.weight, nn.init.calculate_gain("relu")))
+            if module.bias is not None:
+                nn.init.zeros_(module.bias)
 
     def forward(self, features: Tensor) -> Tensor:
         """ Forward pass of the model
