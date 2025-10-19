@@ -6,12 +6,17 @@
 # @File     :   config.py
 # @Desc     :   
 
+from pathlib import Path
+
+# Set base directory
+BASE_DIRECTORY = Path(__file__).resolve().parent.parent
+
 # Data file paths
-TRAIN_DATASET: str = "data/train.csv"
-TEST_DATASET: str = "data/test.csv"
+TRAIN_DATASET = BASE_DIRECTORY / "data/train.csv"
+TEST_DATASET = BASE_DIRECTORY / "data/test.csv"
 
 # Model save path
-MODEL_SAVE_PATH: str = "models/model.pth"
+MODEL_SAVE_PATH = BASE_DIRECTORY / "models/model.pth"
 
 # Data processing parameters
 RANDOM_STATE: int = 27
