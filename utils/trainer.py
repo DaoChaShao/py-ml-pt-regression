@@ -15,8 +15,7 @@ from utils.PT import get_device, TorchDataLoader, log_mse_loss
 
 class TorchTrainer(QObject):
     """ Trainer class for managing training process """
-    process4train: Signal = Signal(int, float)
-    process4valid: Signal = Signal(int, float)
+    losses: Signal = Signal(int, float, float)
 
     def __init__(self, model: nn.Module, optimiser, accelerator: str = "auto") -> None:
         super().__init__()
@@ -94,8 +93,7 @@ class TorchTrainer(QObject):
             self._train_losses.append(train_loss)
             self._valid_losses.append(valid_loss)
             # Emit training and validation progress signal
-            self.process4train.emit(epoch + 1, train_loss)
-            self.process4valid.emit(epoch + 1, valid_loss)
+            self.losses.emit(epoch + 1, train_loss, valid_loss)
 
             print(f"Epoch [{epoch + 1}/{epochs}] - "
                   f"Train Loss: {train_loss:.4f} - "
