@@ -69,6 +69,8 @@
 
 ### Docs
 
+- refine Chinese README for clarity in dataset descriptions ([0c81f6f](https://github.com///commit/0c81f6fa26938f0296125f23db5812a04f269de6))
+- update CHANGELOG.md to include recent feature enhancements and bug fixes ([5025ad1](https://github.com///commit/5025ad1b5405dee5b166b122faa8650d6146e2cb))
 - update Chinese README to include hyperlink for the dataset reference ([1bd3d38](https://github.com///commit/1bd3d381c987b61d278ed41ea9119d563747e806))
 - update README.md to include a hyperlink for the dataset reference ([ee7a4ea](https://github.com///commit/ee7a4eae7ca398bed683887afe2ace7b950e20a0))
 
