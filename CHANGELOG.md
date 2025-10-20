@@ -5,6 +5,10 @@
 
 ### Features
 
+- update table.py to use load_data_for_train in the _load method ([a8d7566](https://github.com///commit/a8d7566f711ecfe315314e29b03fd3474b5a48d6))
+- rename load_data to load_data_for_train and add load_data_for_test function ([f1a9b4e](https://github.com///commit/f1a9b4e4b35df7e018be1e0c405addf54eef7e15))
+- add predictor script for model inference and data processing ([283d3a3](https://github.com///commit/283d3a34eca16b0a17e7c0412c5b1fda2484271c))
+- update data_preparation function to use load_data_for_train and return preprocessor ([cbfb552](https://github.com///commit/cbfb5522a46abdacb68aef09f85480f810547e5f))
 - update TorchTrainer to emit combined training and validation losses ([4dcad5b](https://github.com///commit/4dcad5b8a58a1bf892ec53145af7ac3a0ca42bcd))
 - implement TrainerThread for asynchronous training and validation loss plotting ([f44d379](https://github.com///commit/f44d37973efd8da615215f4731bdbb4781abe9a9))
 - update data_preparation function to return a list of strings for improved type clarity ([c60d472](https://github.com///commit/c60d472d49524d4b189c11804cd06143bd7916ed))
