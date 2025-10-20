@@ -15,7 +15,7 @@ from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget,
 from sys import argv, exit
 
 from utils.config import TRAIN_DATASET
-from utils.stats import load_data
+from utils.stats import load_data_for_train
 
 
 class MainWindow(QMainWindow):
@@ -70,7 +70,7 @@ class MainWindow(QMainWindow):
         self.close()
 
     def _load(self):
-        X, y = load_data(f"../{TRAIN_DATASET}")
+        X, y = load_data_for_train(f"../{TRAIN_DATASET}")
 
         # Clear the previous data
         self._model_train.clear()
