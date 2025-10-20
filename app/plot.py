@@ -28,7 +28,7 @@ class TrainerThread(QThread):
     losses = Signal(int, float, float)
 
     def run(self):
-        train_loader, valid_loader, _ = data_preparation()
+        train_loader, valid_loader, _, _ = data_preparation()
         model = TorchLinearModel(train_loader[0][0].shape[0], HIDDEN_UNITS, 1)
         model.to(device(ACCELERATOR))
         optimiser = optim.Adam(model.parameters(), lr=ALPHA)
@@ -123,7 +123,7 @@ class MainWindow(QMainWindow):
                 button.setEnabled(True)
 
     def _get_losses(self, epoch: int, loss_train: float, loss_valid: float) -> None:
-        print(f"[Signal] Epoch {epoch}: Train Loss {loss_train:.4f} - Valid Loss {loss_valid:.4f}")
+        # print(f"[Signal] Epoch {epoch}: Train Loss {loss_train:.4f} - Valid Loss {loss_valid:.4f}")
         self._series_train_loss.append(epoch, loss_train)
         self._series_valid_loss.append(epoch, loss_valid)
 
