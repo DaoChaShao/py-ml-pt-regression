@@ -5,6 +5,9 @@
 
 ### Features
 
+- enhance prediction output formatting by using pprint for better readability ([3dc2360](https://github.com///commit/3dc2360218787840f751c4bab2d6f10be6affaa8))
+- save the best model.pth ([e2b3f58](https://github.com///commit/e2b3f582dd87410e41bdb4000a80926419ab29f7))
+- increase training epochs from 100 to 300 for improved model performance ([a7d31ec](https://github.com///commit/a7d31ecf4fe24182587730bb64549ae833546d89))
 - update table.py to use load_data_for_train in the _load method ([a8d7566](https://github.com///commit/a8d7566f711ecfe315314e29b03fd3474b5a48d6))
 - rename load_data to load_data_for_train and add load_data_for_test function ([f1a9b4e](https://github.com///commit/f1a9b4e4b35df7e018be1e0c405addf54eef7e15))
 - add predictor script for model inference and data processing ([283d3a3](https://github.com///commit/283d3a34eca16b0a17e7c0412c5b1fda2484271c))
@@ -59,4 +62,13 @@
 - add pyproject.toml for project configuration and dependencies ([e4dbd32](https://github.com///commit/e4dbd3231fc8ae04a177e5b1a6b54dfa6645cec3))
 - add .python-version file to specify Python version 3.12 ([5a07e48](https://github.com///commit/5a07e48899f0397f073d4b681a6b4577f0d1cdd1))
 - add .gitignore to exclude Python artifacts and IDE files ([998830c](https://github.com///commit/998830ce45a9120223b383305af1ed4d64ad1623))
+
+### Bug Fixes
+
+- update data_preparation call to include additional return value and comment out loss print statement ([cf665c3](https://github.com///commit/cf665c37bf5a04a2a1b1be0bb8960c5cc8b336f7))
+
+### Docs
+
+- update Chinese README to include hyperlink for the dataset reference ([1bd3d38](https://github.com///commit/1bd3d381c987b61d278ed41ea9119d563747e806))
+- update README.md to include a hyperlink for the dataset reference ([ee7a4ea](https://github.com///commit/ee7a4eae7ca398bed683887afe2ace7b950e20a0))
 
