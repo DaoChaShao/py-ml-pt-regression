@@ -9,8 +9,10 @@
 
 **数据描述**
 ---
-“House Prices – Advanced Regression Techniques” 是一个**回归任务**的数据集，目标是 预测住宅的**销售价格（SalePrice）**
-。其主要用途是练习特征工程（feature engineering）、回归模型（regression models）、以及数据预处理流程（包括缺失值处理、类别变量编码、连续变量变换等）。
+[“House Prices – Advanced Regression
+Techniques”](https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques) 是一个**回归任务**的数据集，目标是
+预测住宅的**销售价格（SalePrice）**。其主要用途是练习特征工程（feature engineering）、回归模型（regression
+models）、以及数据预处理流程（包括缺失值处理、类别变量编码、连续变量变换等）。
 
 数据源来自美国艾姆斯市（Ames, Iowa）的一批房屋交易数据，包含大量住宅属性特征（如地块面积、房屋建造年份、房间数、位置类型、质量评级、车库、地下室、露台等）。
 
