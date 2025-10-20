@@ -33,5 +33,5 @@ BATCHES: int = 32
 HIDDEN_UNITS: int = 128
 ALPHA: float = 0.01
 ALPHA4REDUCTION: float = 0.3
-EPOCHS: int = 100
+EPOCHS: int = 300
 ACCELERATOR: str = "cpu"
