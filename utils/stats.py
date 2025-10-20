@@ -64,7 +64,7 @@ class NumpyRandomSeed:
 
 
 @timer
-def load_data(dataset_path: str) -> tuple[DataFrame, DataFrame]:
+def load_data_for_train(dataset_path: str) -> tuple[DataFrame, DataFrame]:
     """ Read data from a dataset file
     :param dataset_path: path to the dataset file
     :return: data read from the file
@@ -80,6 +80,22 @@ def load_data(dataset_path: str) -> tuple[DataFrame, DataFrame]:
     print(f"y's type is {type(y)}, and its shape is {y.shape}.")
 
     return X, y
+
+
+@timer
+def load_data_for_test(dataset_path: str) -> DataFrame:
+    """ Read data from a dataset file
+    :param dataset_path: path to the dataset file
+    :return: data read from the file
+    """
+    dataset: DataFrame = read_csv(dataset_path)
+    # Delete index column if exists
+
+    X: DataFrame = dataset.drop(dataset.columns[0], axis=1)
+
+    print(f"X's type is {type(X)}, and its shape is {X.shape}.")
+
+    return X
 
 
 @timer
