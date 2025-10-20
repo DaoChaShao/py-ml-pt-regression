@@ -11,10 +11,10 @@ prediction results.
 
 **DATA DESCRIPTION**
 ---
-The “House Prices – Advanced Regression Techniques” dataset is designed for a regression task: **predicting the sale
-price (SalePrice)** of residential homes. Its primary purpose is for practicing feature engineering, regression
-modeling, and data preprocessing workflows (including missing value handling, categorical encoding, continuous variable
-transformation, etc).
+The [“House Prices – Advanced Regression Techniques”](https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques)
+dataset is designed for a regression task: **predicting the sale price (SalePrice)** of residential homes. Its primary
+purpose is for practicing feature engineering, regression modeling, and data preprocessing workflows (including missing
+value handling, categorical encoding, continuous variable transformation, etc).
 
 The dataset originates from a collection of home sale transactions in Ames, Iowa, USA, and includes many property
 attributes (such as lot size, house age, number of rooms, neighborhood, quality ratings, garage, basement, porch, etc).
