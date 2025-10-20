@@ -19,8 +19,8 @@ models）、以及数据预处理流程（包括缺失值处理、类别变量�
 **数据结构**
 ---
 
-+ **训练集（train.csv）**包含每幢房屋的 Id、大约 79 个属性特征（不同类型：数值型、类别型、顺序型）以及目标变量 **SalePrice**。
-+ **测试集（test.csv）**具有与训练集同样的特征（不含 SalePrice），模型在测试集上的预测结果用于提交评估。
++ **训练集**（train.csv）包含每幢房屋的 Id、大约 79 个属性特征（不同类型：数值型、类别型、顺序型）以及目标变量 **SalePrice**。
++ **测试集**（test.csv）具有与训练集同样的特征（不含 SalePrice），模型在测试集上的预测结果用于提交评估。
 + 特征大致可分为：
     + 房屋物理属性：例如 LotArea（地块面积）、1stFlrSF / 2ndFlrSF（第一、第二层地上面积）、GrLivArea（地上居住面积）、TotalBsmtSF（地下室总面积）
     + 建造与时间属性：YearBuilt（建造年份）、YearRemodAdd（改造年份）、GarageYrBlt（车库建造年份）、YrSold（售出年份）
