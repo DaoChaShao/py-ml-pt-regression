@@ -9,6 +9,7 @@
 from numpy import ndarray, exp
 from os import path
 from pandas import DataFrame
+from pprint import pprint
 from torch import load, device, no_grad
 
 from utils.config import (MODEL_SAVE_PATH, TEST_DATASET,
@@ -59,7 +60,8 @@ def main() -> None:
         with no_grad():
             pred_predictions = model(X_tensor).cpu().numpy()
             print(f"Predictions shape: {pred_predictions.shape}")
-            print(f"First 10 predictions: {pred_predictions[:10]}")
+            print(f"First 10 predictions:")
+            pprint(pred_predictions[:10])
 
     else:
         print(f"Model file not found at: {MODEL_SAVE_PATH}. Please train the model first.")
