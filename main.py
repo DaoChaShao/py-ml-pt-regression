@@ -19,17 +19,18 @@ from utils.config import (TRAIN_DATASET,
 from utils.helper import Timer
 from utils.models import TorchLinearModel
 from utils.PT import TorchDataset, TorchDataLoader, TorchRandomSeed
-from utils.stats import (load_data, summary_data,
+from utils.stats import (load_data_for_train,
+                         summary_data,
                          preprocess_data,
                          split_data,
                          pca_importance, )
 from utils.trainer import TorchTrainer
 
 
-def data_preparation() -> tuple[TorchDataLoader, TorchDataLoader, list[str]]:
+def data_preparation():
     """ Data Preparation """
     # Load training raw dataset
-    X_train_raw, y_train_raw = load_data(TRAIN_DATASET)
+    X_train_raw, y_train_raw = load_data_for_train(TRAIN_DATASET)
 
     # Summary of raw data
     summary_data(X_train_raw)
@@ -46,7 +47,7 @@ def data_preparation() -> tuple[TorchDataLoader, TorchDataLoader, list[str]]:
     summary_data(X_valid)
 
     # Get the important features using PCA
-    important_features, pca_model, _ = pca_importance(X_train, PCA_VARIANCE_THRESHOLD)
+    important_features, _, _ = pca_importance(X_train, PCA_VARIANCE_THRESHOLD)
     # Get the important data
     X_train_pca = X_train[important_features]
     X_valid_pca = X_valid[important_features]
@@ -59,13 +60,13 @@ def data_preparation() -> tuple[TorchDataLoader, TorchDataLoader, list[str]]:
     train_loader = TorchDataLoader(train_set, BATCHES, IS_SHUFFLE)
     valid_loader = TorchDataLoader(valid_set, BATCHES, IS_SHUFFLE)
 
-    return train_loader, valid_loader, important_features
+    return train_loader, valid_loader, preprocessor, important_features
 
 
 def main() -> None:
     """ Main Function """
     with Timer("Data Preparation"):
-        train_loader, valid_loader, _ = data_preparation()
+        train_loader, valid_loader, _, _ = data_preparation()
         # print(train_loader)
         # print(train_loader[0])
 
